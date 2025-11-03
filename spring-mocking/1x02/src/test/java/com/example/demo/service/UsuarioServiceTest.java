@@ -33,7 +33,7 @@ public class UsuarioServiceTest {
         Usuario usuario = new Usuario(1L, "Usuario", "usuario@usuario.com");
         when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
 
-        Usuario u = usuarioService.buscarPorId(1L);
+        Usuario u = usuarioService.buscarUsuarioPorId(1L);
 
         assertEquals(usuario, u);
     }
@@ -42,7 +42,7 @@ public class UsuarioServiceTest {
     void deveLancarExcecaoQuandoUsuarioNaoExistir() {
         when(usuarioRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, (() -> usuarioService.buscarPorId(1L)));
+        assertThrows(RuntimeException.class, (() -> usuarioService.buscarUsuarioPorId(1L)));
     }
 
     @Test
